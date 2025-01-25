@@ -187,3 +187,69 @@ form#contact-form button {
 form#contact-form button:hover {
     background: #45a049;
 }
+
+
+.skills {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item i {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+}
+
+.skill-item p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.skill-item:hover i {
+    transform: scale(1.2);
+    color: #45a049;
+    transition: all 0.3s ease;
+}
+
+
+.skills {
+    background: linear-gradient(to right, #4CAF50, #81C784);
+    color: white;
+    padding: 2rem;
+}
+.skills h2 {
+    color: white;
+}
+.skill-item {
+    background: rgba(255, 255, 255, 0.8);
+}
