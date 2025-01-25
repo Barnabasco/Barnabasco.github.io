@@ -253,3 +253,28 @@ form#contact-form button:hover {
 .skill-item {
     background: rgba(255, 255, 255, 0.8);
 }
+
+
+/* About Me Section */
+.about-me {
+    padding: 2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-me h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.about-me p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.about-me strong {
+    color: #4CAF50;
+}
