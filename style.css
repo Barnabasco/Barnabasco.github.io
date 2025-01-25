@@ -98,6 +98,43 @@ header .nav-links a:hover {
     text-decoration: underline;
 }
 
+/* Blog Section */
+.blog {
+    padding: 2rem;
+    line-height: 1.8;
+}
+
+.blog h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.blog article {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+.blog article h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #4CAF50;
+}
+
+.blog article p {
+    font-size: 1rem;
+}
+
+.blog article a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.blog article a:hover {
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     background: #333;
@@ -114,4 +151,39 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Contact Form */
+form#contact-form {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 500px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form#contact-form input,
+form#contact-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form#contact-form button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+form#contact-form button:hover {
+    background: #45a049;
 }
