@@ -1,0 +1,280 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+header .nav-links li {
+    margin: 0 15px;
+}
+
+header .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+header .nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .cta {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.hero .cta:hover {
+    background-color: #f1f1f1;
+}
+
+/* Projects Section */
+.projects {
+    padding: 2rem;
+}
+
+.projects h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.projects .project-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.projects .project-list li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.projects .project-list a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.projects .project-list a:hover {
+    text-decoration: underline;
+}
+
+/* Blog Section */
+.blog {
+    padding: 2rem;
+    line-height: 1.8;
+}
+
+.blog h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.blog article {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+}
+
+.blog article h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #4CAF50;
+}
+
+.blog article p {
+    font-size: 1rem;
+}
+
+.blog article a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.blog article a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+form#contact-form {
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 500px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form#contact-form input,
+form#contact-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form#contact-form button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+form#contact-form button:hover {
+    background: #45a049;
+}
+
+
+.skills {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.skills h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background: #fff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-item i {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+}
+
+.skill-item p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.skill-item:hover i {
+    transform: scale(1.2);
+    color: #45a049;
+    transition: all 0.3s ease;
+}
+
+
+.skills {
+    background: linear-gradient(to right, #4CAF50, #81C784);
+    color: white;
+    padding: 2rem;
+}
+.skills h2 {
+    color: white;
+}
+.skill-item {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+/* About Me Section */
+.about-me {
+    padding: 2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-me h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.about-me p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.about-me strong {
+    color: #4CAF50;
+}
