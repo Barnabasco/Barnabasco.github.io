@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Outcome Optimization | Healthcare Data Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Green theme from project card */
+            --primary-dark: #388E3C;
+            --primary-light: #C8E6C9;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-color: #2196F3;
+            --success-color: #4CAF50;
+            --warning-color: #FFC107;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--warning-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .hero-banner {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://bit.ly/3xTmdUP') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .banner-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+        
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-decoration: underline;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .banner-content h2 {
+            font-size: 2rem;
+            color: gold;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .author-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-light);
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--primary-light);
+        }
+        
+        .section-header i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+        
+        .section-content {
+            line-height: 1.8;
+        }
+        
+        .section-content p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .card {
+            background: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card ul {
+            padding-left: 1.5rem;
+        }
+        
+        .card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .card li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .code-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #66d9ef;
+        }
+        
+        .code-lang {
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        tr:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .impact-metric {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        
+        .improvement {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        .data-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .flow-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .flow-step:hover {
+            transform: translateY(-8px);
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary-dark);
+        }
+        
+        .step-details {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .resource-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 3rem 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: gold;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .banner-content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>HealthData Analytics</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Insights</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Resources</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Patient Outcome Optimization Through Healthcare Data Analysis</h1>
+            <h2>Data-driven clinical strategy enhancement</h2>
+            <p>Leveraging SQL, Excel, and Power BI to analyze healthcare records and improve patient outcomes</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>Led a data-driven initiative to enhance patient outcomes by analyzing 250,000+ healthcare records using SQL, Excel, and Power BI. Identified correlations between treatment protocols and recovery rates, resulting in 18% improvement in patient outcomes across key metrics.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Healthcare Analytics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Data Science</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Clinical Informatics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> SQL</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Power BI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Approach -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-code"></i>
+                <h2 class="section-title">Technical Approach</h2>
+            </div>
+            <div class="section-content">
+                <p>The project utilized SQL for data analysis and Python for predictive modeling to identify optimal treatment pathways.</p>
+                
+                <div class="code-container">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">SQL</span>
+                            <span>Treatment Efficacy Analysis</span>
+                        </div>
+                        <pre><code>-- Treatment efficacy analysis
+SELECT 
+    treatment_type,
+    AVG(recovery_days) AS avg_recovery,
+    COUNT(CASE WHEN readmission_30d = 1 THEN 1 END) * 100.0 / COUNT(*) AS readmission_rate,
+    CORR(patient_age, recovery_days) AS age_correlation
+FROM patient_records
+WHERE discharge_date > '2022-01-01'
+GROUP BY treatment_type
+ORDER BY avg_recovery;</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python</span>
+                            <span>Outcome Prediction Model</span>
+                        </div>
+                        <pre><code># Outcome prediction model
+from sklearn.ensemble import RandomForestClassifier
+
+features = ['age', 'treatment_type', 'comorbidity_index', 'treatment_duration']
+target = 'recovery_status'
+
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train[features], y_train)
+predictions = model.predict(X_test[features])</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Insights -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2 class="section-title">Key Insights</h2>
+            </div>
+            <div class="section-content">
+                <h3>Treatment Efficacy Dashboard</h3>
+                <p>Interactive Power BI dashboard showing recovery rates by treatment type</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-user-friends"></i> Demographic Trends</h3>
+                        <p>Patients 65+ showed 32% longer recovery times compared to younger patients</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-stethoscope"></i> Treatment Efficacy</h3>
+                        <p>Protocol B reduced readmissions by 24% compared to standard care protocols</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-dollar-sign"></i> Cost Impact</h3>
+                        <p>Implementation of optimal treatment pathways saved $2.3M annually</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-line"></i>
+                <h2 class="section-title">Impact</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Before</th>
+                            <th>After</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30-day readmission rate</td>
+                            <td>15.2%</td>
+                            <td>11.6%</td>
+                            <td class="impact-metric"><span class="improvement">↓ 23.7%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Avg. recovery days</td>
+                            <td>8.7</td>
+                            <td>7.1</td>
+                            <td class="impact-metric"><span class="improvement">↓ 18.4%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Patient satisfaction</td>
+                            <td>82%</td>
+                            <td>91%</td>
+                            <td class="impact-metric"><span class="improvement">↑ 11%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cost per patient</td>
+                            <td>$5,420</td>
+                            <td>$4,680</td>
+                            <td class="impact-metric"><span class="improvement">↓ 13.7%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Implementation -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-cogs"></i>
+                <h2 class="section-title">Implementation</h2>
+            </div>
+            <div class="section-content">
+                <h3>Healthcare Data Pipeline Architecture</h3>
+                
+                <div class="data-flow">
+                    <div class="flow-step">
+                        <div class="step-icon">📥</div>
+                        <h3 class="step-title">Extraction</h3>
+                        <p class="step-details">Pull from EMR Systems</p>
+                        <p><i>Tools: SQL Server Integration Services (SSIS)</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">💾</div>
+                        <h3 class="step-title">Storage</h3>
+                        <p class="step-details">SQL Server Database</p>
+                        <p><i>Features: ACID compliance, Daily backups</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🧹</div>
+                        <h3 class="step-title">Cleansing</h3>
+                        <p class="step-details">Standardization & Validation</p>
+                        <p><i>Processes: Deduplication, Null handling</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🧠</div>
+                        <h3 class="step-title">Analysis</h3>
+                        <p class="step-details">Predictive Models</p>
+                        <p><i>Techniques: Random Forest, Logistic Regression</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">📊</div>
+                        <h3 class="step-title">Visualization</h3>
+                        <p class="step-details">Power BI Dashboards</p>
+                        <p><i>Components: Treatment efficacy, Recovery trends</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🩺</div>
+                        <h3 class="step-title">Consumption</h3>
+                        <p class="step-details">Clinical Teams</p>
+                        <p><i>Usage: Daily decision support</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinical Recommendations -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-file-medical"></i>
+                <h2 class="section-title">Clinical Recommendations</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-clipboard-check"></i> Standardization</h3>
+                        <p>Standardize Protocol for selected group of patients to improve consistency and outcomes</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-wheelchair"></i> Geriatric Care</h3>
+                        <p>Implement specialized geriatric care pathways for patients 70+ to address longer recovery times</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-user-md"></i> Staff Optimization</h3>
+                        <p>Adjust staffing based on treatment demand patterns to reduce wait times and improve care</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fas fa-chart-bar"></i> Dashboard Template</h3>
+                        <p>Interactive Power BI dashboard template for treatment efficacy analysis</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Template
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-medical-alt"></i> Clinical Report Sample</h3>
+                        <p>Sample clinical report showing data-driven recommendations and outcomes</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-file-download"></i> View Sample
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-database"></i> Data Governance Framework</h3>
+                        <p>Comprehensive framework for healthcare data management and governance</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-book"></i> View Framework
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Healthcare Data Insights</h3>
+                <p>Transforming healthcare through data-driven insights and predictive analytics to improve patient outcomes and operational efficiency.</p>
+                <p style="margin-top: 15px;">
+                    <i class="fas fa-envelope"></i> barnbascopara@gmail.com<br>
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Insights</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                    <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                    
+                    <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                   
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <h4>Newsletter</h4>
+                    <div style="display: flex; margin-top: 10px;">
+                        <input type="email" placeholder="Your email address" style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
+                        <button style="background: gold; color: #333; border: none; padding: 0 15px; font-weight: bold; border-radius: 0 4px 4px 0; cursor: pointer;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+        </div>
+    </footer>
+</body>
+</html>
