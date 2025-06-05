@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chimaobi Barnabas Opara - Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="include.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J0ZN7NJM0N"></script>
     <script>
@@ -15,57 +14,836 @@
         gtag('js', new Date());
         gtag('config', 'G-J0ZN7NJM0N');
     </script>
+    <style>
+        /* General Styles */
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #45a049;
+            --secondary: #2c3e50;
+            --light: #f9f9f9;
+            --dark: #333;
+            --gray: #777;
+            --light-gray: #f1f1f1;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--secondary);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--secondary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+        
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #2c3e50 0%, #4CAF50 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIj48L3JlY3Q+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIj48L3JlY3Q+PC9zdmc+');
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* About Me Section */
+        .about-me {
+            background: white;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-width: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .education {
+            margin: 30px 0;
+            padding-left: 20px;
+        }
+        
+        .education li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .education li:before {
+            content: "🎓";
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(to right, var(--secondary), var(--primary-dark));
+            color: white;
+        }
+        
+        .skills h2 {
+            color: white;
+        }
+        
+        .skills h2:after {
+            background: white;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .skill-item p {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        /* Projects Section */
+        .projects-feed {
+            background: var(--light-gray);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-link {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .project-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                max-width: 100%;
+                margin-top: 30px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--secondary);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header will be dynamically included -->
     <div id="header"></div>
 
-    
-    <section class="about-me">
-        <h1>About Me</h1>
-        <p>Hi, I am <strong>Chimaobi Barnabas Opara</strong>, As a Senior AI and Data Solutions Architect with 11+ years of experience, I excel in leveraging machine learning, data analytics, and business intelligence to create impactful, data-driven solutions that streamline operations and drive innovation.</p>
-
-        <h2>Education</h2>
-        <ul>
-            <li><strong>Master of Science in Artificial Intelligence </strong> - University of Salford,United Kingdom</li>
-            <li><strong>Master of Engineering in Electrical Electronics</strong>- Federal University of technology Akure, Nigeria</li>
-            <li><strong>Bachelor of Engineering in Computer Engineering</strong>- Caritas University, Nigeria</li>
-        </ul>
-
-        <p>When I am not solving technical challenges, I explore advancements in healthcare AI, mentor colleagues, and stay updated on industry trends.</p>
-
-
-    </section>
-  
-    <section class="skills">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <i class="fas fa-brain"></i>
-                <p>Machine Learning & AI</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-chart-bar"></i>
-                <p>Data Visualization (Spotfire, Power BI)</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-code"></i>
-                <p>Automation with Python</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-database"></i>
-                <p>Custom Dashboard Development</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-heartbeat"></i>
-                <p>Healthcare AI Solutions</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Chimaobi Barnabas Opara</h1>
+            <p>Senior AI & Data Solutions Architect | Transforming Data into Actionable Insights</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
     </section>
-    
-    
+
+    <!-- About Me Section -->
+    <section class="about-me">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hi, I am <strong>Chimaobi Barnabas Opara</strong>, a Senior AI and Data Solutions Architect with 8+ years of experience. I excel in leveraging machine learning, data analytics, and business intelligence to create impactful, data-driven solutions that streamline operations and drive innovation.</p>
+                    
+                    <h3>Education</h3>
+                    <ul class="education">
+                        <li><strong>Master of Science in Artificial Intelligence</strong> - University of Salford </li>
+                        <li><strong>Master of Engineering in Electrical Electronics</strong> - Federal University of Technology Akure</li>
+                        <li><strong>Bachelor of Engineering in Computer Engineering</strong> - Caritas University</li>
+                    </ul>
+                    
+                    <p>When I am not solving technical challenges, I explore advancements in healthcare AI, mentor colleagues, and stay updated on industry trends.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-brain"></i>
+                    <p>Machine Learning & AI</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Data Visualization (Spotfire, Power BI)</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <p>Automation with Python</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database"></i>
+                    <p>Custom Dashboard Development</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Healthcare AI Solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Feed Section -->
+    <section id="projects" class="projects-feed">
+        <div class="container">
+            <h2>My Projects</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Here is a curated list of my technical projects, showcasing my expertise in data science, machine learning, and automation. Click on any project to learn more.</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_1_Deep_Learning" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%234CAF50' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EDeep Learning Analysis%3C/text%3E%3C/svg%3E" alt="Deep Learning Analysis">
+                        <div class="project-tag">AI Research</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Deep Learning-Driven Comparative Analysis of Pre-trained CNNs and Transformers</h3>
+                        <p>A comprehensive analysis comparing the performance of various pre-trained models on image classification tasks.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 2 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_2_Pedestrian_Light_Classification" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%232c3e50' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EPedestrian Light Classification%3C/text%3E%3C/svg%3E" alt="Pedestrian Light Classification">
+                        <div class="project-tag">Computer Vision</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Pedestrian Light Indicator Classification</h3>
+                        <p>Classification system for pedestrian light indicators using computer vision techniques.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 3 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_3_TV_Aerial_Detection" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%233498db' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ETV Aerial Detection%3C/text%3E%3C/svg%3E" alt="TV Aerial Detection">
+                        <div class="project-tag">Object Detection</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>TV Aerial and Satellite Dish Detection Using YOLOv7 and YOLOv8</h3>
+                        <p>Detection system for TV aerials and satellite dishes using state-of-the-art YOLO models.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 4 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_4_Income_Benchmark_Prediction" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23f39c12' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EIncome Prediction%3C/text%3E%3C/svg%3E" alt="Income Benchmark Prediction">
+                        <div class="project-tag">Predictive Analytics</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Income Benchmark Prediction Using Decision Trees and SVM</h3>
+                        <p>Predicting income benchmarks using machine learning algorithms like Decision Trees and SVM.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 5 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_5_Employee_Attrition_Clustering" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%239b59b6' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EEmployee Attrition%3C/text%3E%3C/svg%3E" alt="Employee Attrition Analysis">
+                        <div class="project-tag">HR Analytics</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Employee Attrition Analysis Using Clustering Algorithms</h3>
+                        <p>Analyzing employee attrition patterns using clustering algorithms to identify key factors.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 6 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_6_Yelp_Sentiment_Analysis" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23e74c3c' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EYelp Sentiment Analysis%3C/text%3E%3C/svg%3E" alt="Yelp Sentiment Analysis">
+                        <div class="project-tag">NLP</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Yelp Sentiment Analysis</h3>
+                        <p>Sentiment analysis of Yelp reviews using natural language processing techniques.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- More projects would continue here in the same pattern -->
+                
+                <!-- Project 7 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_7_Fault_Detection_Industrial_Systems" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%231abc9c' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EFault Detection%3C/text%3E%3C/svg%3E" alt="Fault Detection">
+                        <div class="project-tag">Industrial AI</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Fault Detection in Industrial Systems Using Machine Learning</h3>
+                        <p>Machine learning system for detecting faults in industrial equipment and processes.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 8 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_8_Spotfire_Export_To_PowerPoint" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%233498db' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3ESpotfire Automation%3C/text%3E%3C/svg%3E" alt="Spotfire Automation">
+                        <div class="project-tag">Automation</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Automating Spotfire Dashboard Exports to PowerPoint</h3>
+                        <p>Automation solution for exporting Spotfire dashboards directly to PowerPoint presentations.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Project 9 -->
+                <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_9_Python_Gmail_API_Automation" class="project-card">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect fill='%23e74c3c' width='400' height='200'/%3E%3Ctext fill='%23ffffff' font-family='Arial' font-size='20' font-weight='bold' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EGmail Automation%3C/text%3E%3C/svg%3E" alt="Gmail Automation">
+                        <div class="project-tag">API Integration</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Python-Based Gmail API Automation</h3>
+                        <p>Automating Gmail workflows using Python and the Gmail API for enhanced productivity.</p>
+                        <span class="project-link">View Project <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- Note: Additional projects would continue in the same pattern -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="projects.html" class="btn">View All Projects</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer will be dynamically included -->
     <div id="footer"></div>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if(menuBtn) {
+                menuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if(navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
