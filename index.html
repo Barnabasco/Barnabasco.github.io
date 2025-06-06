@@ -14,599 +14,25 @@
         gtag('js', new Date());
         gtag('config', 'G-J0ZN7NJM0N');
     </script>
-    <style>
-        /* General Styles */
-        :root {
-            --primary: #4CAF50;
-            --primary-dark: #45a049;
-            --secondary: #2c3e50;
-            --light: #f9f9f9;
-            --dark: #333;
-            --gray: #777;
-            --light-gray: #f1f1f1;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        h1, h2, h3, h4 {
-            color: var(--secondary);
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            position: relative;
-            text-align: center;
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: var(--gray);
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-        
-        a:hover {
-            color: var(--primary-dark);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            color: white;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Header Styles */
-        header {
-            background: var(--secondary);
-            color: white;
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-        }
-        
-        .logo span {
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-        
-        .nav-links li {
-            margin: 0 15px;
-        }
-        
-        .nav-links a {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 8px 0;
-            position: relative;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover:after,
-        .nav-links a.active:after {
-            width: 100%;
-        }
-        
-        .menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(135deg, #2c3e50 0%, #4CAF50 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIj48L3JlY3Q+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIj48L3JlY3Q+PC9zdmc+');
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        /* About Me Section */
-        .about-me {
-            background: white;
-        }
-        
-        .about-content {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            max-width: 500px;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .education {
-            margin: 30px 0;
-            padding-left: 20px;
-        }
-        
-        .education li {
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 25px;
-        }
-        
-        .education li:before {
-            content: "🎓";
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-        
-        /* Skills Section */
-        .skills {
-            background: linear-gradient(to right, var(--secondary), var(--primary-dark));
-            color: white;
-        }
-        
-        .skills h2 {
-            color: white;
-        }
-        
-        .skills h2:after {
-            background: white;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .skill-item {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: var(--transition);
-            backdrop-filter: blur(5px);
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: var(--shadow);
-        }
-        
-        .skill-item i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .skill-item p {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 0;
-        }
-        
-        /* Projects Section */
-        .projects-feed {
-            background: var(--light-gray);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-        
-        .project-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .project-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .project-content p {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        
-        .project-link {
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            color: var(--primary);
-        }
-        
-        .project-link i {
-            margin-left: 5px;
-            transition: var(--transition);
-        }
-        
-        .project-link:hover i {
-            transform: translateX(5px);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--secondary);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .footer-links a i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .contact-item i {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                max-width: 100%;
-                margin-top: 30px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu-btn {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--secondary);
-                flex-direction: column;
-                align-items: center;
-                padding-top: 40px;
-                transition: var(--transition);
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            h1 {
-                font-size: 2.3rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 80%;
-                max-width: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            section {
-                padding: 60px 0;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-        }
-    </style>
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <!-- Header will be dynamically included -->
-    <div id="header"></div>
+    <!-- Unified Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -671,7 +97,7 @@
         </div>
     </section>
 
-    <!-- Projects Feed Section -->
+    <!-- Projects Section -->
     <section id="projects" class="projects-feed">
         <div class="container">
             <h2>My Projects</h2>
@@ -821,80 +247,46 @@
         </div>
     </section>
 
-    <!-- Footer will be dynamically included -->
-    <div id="footer"></div>
-
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.querySelector('.menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if(menuBtn) {
-                menuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Close mobile menu if open
-                        if(navLinks.classList.contains('active')) {
-                            navLinks.classList.remove('active');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-<div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Projects</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Insights</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Resources</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
-                    <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
-                    
-                    <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
-                   
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Me</h3>
+                    <p>Senior AI & Data Solutions Architect with 8+ years of experience in machine learning, data analytics, and business intelligence.</p>
                 </div>
                 
-                <div style="margin-top: 2rem;">
-                    <h4>Newsletter</h4>
-                    <div style="display: flex; margin-top: 10px;">
-                        <input type="email" placeholder="Your email address" style="flex: 1; padding: 10px; border: none; border-radius: 4px 0 0 4px;">
-                        <button style="background: gold; color: #333; border: none; padding: 0 15px; font-weight: bold; border-radius: 0 4px 4px 0; cursor: pointer;">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="copyright">
-            <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
 </html>
