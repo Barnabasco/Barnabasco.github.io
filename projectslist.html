@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chimaobi Opara - Projects Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6cf7;
+            --secondary: #6a11cb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray: #94a3b8;
+            --dark-gray: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 50px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            font-weight: 400;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+        
+        .page-title h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .page-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto 3rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .projects-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .project-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            flex-grow: 1;
+        }
+        
+        .tech-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            gap: 0.7rem;
+            color: var(--secondary);
+        }
+        
+        .project-date {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-bar {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Title Section -->
+    <section class="page-title">
+        <h1>Projects Portfolio</h1>
+        <p>Explore my technical projects showcasing expertise in AI, data science, machine learning, and business intelligence. Each project highlights technologies used and problem-solving approaches.</p>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <button class="filter-btn active">All Projects</button>
+        <button class="filter-btn">AI & Machine Learning</button>
+        <button class="filter-btn">Data Analytics</button>
+        <button class="filter-btn">Computer Vision</button>
+        <button class="filter-btn">Automation</button>
+        <button class="filter-btn">Healthcare</button>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-number">32+</div>
+            <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">18</div>
+            <div class="stat-label">Technologies Used</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">8+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Industry Domains</div>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-container">
+        <!-- Healthcare Analytics -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Healthcare Data Analytics</h3>
+                <span class="project-category">Healthcare Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Data-driven clinical strategy enhancement using SQL and Power BI, improving patient outcomes by 18% through treatment protocol analysis.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Healthcare Data</span>
+                </div>
+                <div class="project-footer">
+                    <a href="healthcareAnalytics.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Jan 2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-Time User Analytics -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Real-Time User Behaviour Analytics</h3>
+                <span class="project-category">Behavior Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Streaming analytics solution for real-time user behavior tracking and pattern recognition using Kafka and Spark.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Apache Kafka</span>
+                    <span class="tech-tag">Apache Spark</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Real-time Processing</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Real-Time-user-behaviour-analytics.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Mar 2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deep Learning Analysis -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Deep Learning Analysis</h3>
+                <span class="project-category">AI Research</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Comprehensive analysis comparing performance of pre-trained CNNs and Transformers on image classification tasks.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">TensorFlow</span>
+                    <span class="tech-tag">PyTorch</span>
+                    <span class="tech-tag">CNNs</span>
+                    <span class="tech-tag">Transformers</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Deep-learning-driven-comparative-analysis.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Nov 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Reporting Modernisation -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Legacy Reporting Modernisation</h3>
+                <span class="project-category">Data Transformation</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Migration of legacy reporting systems to modern cloud-based BI solutions with automated ETL pipelines.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">ETL</span>
+                    <span class="tech-tag">AWS</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Data Migration</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Legacy-Reporting-modernasation.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Feb 2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yelp Sentiment Analysis -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Yelp Sentiment Analysis</h3>
+                <span class="project-category">NLP</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Natural language processing solution for sentiment classification of Yelp reviews using BERT and LSTM models.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">BERT</span>
+                    <span class="tech-tag">LSTM</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Yelp-Sentiment-Analysis.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Dec 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pedestrian Light Indicator -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Pedestrian Light Indicator</h3>
+                <span class="project-category">Computer Vision</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Real-time classification system for pedestrian signals using computer vision and deep learning.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">Deep Learning</span>
+                    <span class="tech-tag">Real-time</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Pedestrian-Light-Indicator.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Oct 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Satellite Dish Detection -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Satellite Dish Detection</h3>
+                <span class="project-category">Object Detection</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Advanced object detection system for identifying TV aerials and satellite dishes in urban environments.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">YOLOv7</span>
+                    <span class="tech-tag">YOLOv8</span>
+                    <span class="tech-tag">Object Detection</span>
+                    <span class="tech-tag">Computer Vision</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Satellite-Dish-Detection.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Sep 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Income Benchmark Prediction -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Income Benchmark Prediction</h3>
+                <span class="project-category">Predictive Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Predicting income benchmarks using machine learning algorithms like Decision Trees and SVM.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Decision Trees</span>
+                    <span class="tech-tag">SVM</span>
+                    <span class="tech-tag">Pandas</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Income-Benchmark-Prediction.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Jul 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Attrition Analysis -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Employee Attrition Analysis</h3>
+                <span class="project-category">HR Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Analyzing employee attrition patterns using clustering algorithms to identify key factors.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Clustering</span>
+                    <span class="tech-tag">K-means</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">HR Analytics</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Employee-Attrition-Analysis.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">May 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tibco Spotfire Projects -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Tibco Spotfire Projects</h3>
+                <span class="project-category">Data Visualization</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Collection of advanced data visualization solutions and interactive dashboards built with Tibco Spotfire.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Dashboarding</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Tibco-Spotfire-Projects.html" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Apr 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Projects -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Other Projects</h3>
+                <span class="project-category">Various Domains</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Explore more projects spanning automation, API integrations, and industrial AI solutions.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Industrial AI</span>
+                </div>
+                <div class="project-footer">
+                    <a href="Other-Projects.html" class="project-link">
+                        View Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Ongoing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // In a real implementation, you would filter projects here
+                // For this demo, we'll just show all projects
+            });
+        });
+        
+        // Add hover effect to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.08)';
+            });
+        });
+    </script>
+</body>
+</html>
