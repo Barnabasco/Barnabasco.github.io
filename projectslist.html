@@ -6,302 +6,9 @@
     <title>Chimaobi Opara - Projects Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #4a6cf7;
-            --secondary: #6a11cb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray: #94a3b8;
-            --dark-gray: #64748b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
-            color: var(--dark);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding-bottom: 50px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .nav-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            font-weight: 400;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin: 3rem 0 2rem;
-        }
-        
-        .page-title h1 {
-            font-size: 2.8rem;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-        
-        .page-title p {
-            color: var(--dark-gray);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-        
-        .filter-bar {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem auto 3rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            padding: 0 20px;
-        }
-        
-        .filter-btn {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .projects-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-header {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-        
-        .project-header h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-category {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-description {
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-            flex-grow: 1;
-        }
-        
-        .tech-title {
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-        
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .tech-tag {
-            background: #e0e7ff;
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .project-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1rem;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            gap: 0.7rem;
-            color: var(--secondary);
-        }
-        
-        .project-date {
-            color: var(--dark-gray);
-            font-size: 0.9rem;
-        }
-        
-        .stats-container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .stat-card {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 8px;
-            background: #f8fafc;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: var(--dark-gray);
-            font-weight: 500;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .projects-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .filter-bar {
-                gap: 0.5rem;
-            }
-            
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+     <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
 </head>
 <body>
     <!-- Header -->
@@ -376,7 +83,7 @@
                     <a href="healthcareAnalytics.html" class="project-link">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
-                    <span class="project-date">Jan 2024</span>
+                    <span class="project-date">Jan 2025</span>
                 </div>
             </div>
         </div>
@@ -400,7 +107,7 @@
                     <a href="Real-Time-user-behaviour-analytics.html" class="project-link">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
-                    <span class="project-date">Mar 2024</span>
+                    <span class="project-date">Mar 2025</span>
                 </div>
             </div>
         </div>
@@ -424,7 +131,7 @@
                     <a href="Deep-learning-driven-comparative-analysis.html" class="project-link">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
-                    <span class="project-date">Nov 2023</span>
+                    <span class="project-date">June 2024</span>
                 </div>
             </div>
         </div>
@@ -572,55 +279,366 @@
                 </div>
             </div>
         </div>
-
-        <!-- Tibco Spotfire Projects -->
+        
+        <!-- ============================================ -->
+        <!-- SUB-PROJECTS FROM OTHER-PROJECTS.HTML -->
+        <!-- ============================================ -->
+        
+        <!-- Fault Detection in Industrial Systems -->
         <div class="project-card">
             <div class="project-header">
-                <h3>Tibco Spotfire Projects</h3>
+                <h3>Fault Detection in Industrial Systems</h3>
+                <span class="project-category">Industrial AI</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Machine learning for predictive maintenance in industrial equipment.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Predictive Maintenance</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_7_Fault_Detection_Industrial_Systems" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Jun 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Python-Based Gmail API Automation -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Python-Based Gmail API Automation</h3>
+                <span class="project-category">Automation</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Automated email processing system using Python and Gmail API.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Gmail API</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Google Cloud</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_9_Python_Gmail_API_Automation" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Aug 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Python Image Processing Tool -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Custom Python Image Processing Tool</h3>
+                <span class="project-category">Computer Vision</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Advanced image manipulation and analysis tool built with Python.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">Image Processing</span>
+                    <span class="tech-tag">Computer Vision</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_11_Python_Image_Processing_Tool" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Sep 2022</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Renewable Energy Topic Modeling -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Renewable Energy Topic Modeling</h3>
+                <span class="project-category">NLP</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">NLP analysis of renewable energy articles using topic modeling techniques.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">Topic Modeling</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Gensim</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_12_Renewable_Energy_Topic_Modeling" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Oct 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Python CSV Data Transformation -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Python CSV Data Transformation</h3>
+                <span class="project-category">Data Engineering</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Automation for data transformation pipelines using Python.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Data Transformation</span>
+                    <span class="tech-tag">Automation</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_14_Python_CSV_Data_Transformation" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Nov 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PowerPoint Automation -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>PowerPoint Automation</h3>
+                <span class="project-category">Automation</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Automated report generation with Python and PowerPoint API.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">PowerPoint API</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Report Generation</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_17_Python_PowerPoint_Automation" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Dec 2024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Visualization Training -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Data Visualization Training</h3>
+                <span class="project-category">Education</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Educational materials for data visualization techniques and best practices.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Training</span>
+                    <span class="tech-tag">Educational Materials</span>
+                    <span class="tech-tag">Best Practices</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_22_Data_Visualization_Training" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Jan 2024</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ============================================ -->
+        <!-- SUB-PROJECTS FROM TIBCO-SPOTFIRE-PROJECTS.HTML -->
+        <!-- ============================================ -->
+        
+        <!-- Dashboard Exports to PowerPoint -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Dashboard Exports to PowerPoint</h3>
+                <span class="project-category">Automation</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Automating Spotfire dashboard exports to PowerPoint presentations.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">PowerPoint</span>
+                    <span class="tech-tag">Automation</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_8_Spotfire_Export_To_PowerPoint" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Jul 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Visualizations -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Custom Visualizations</h3>
                 <span class="project-category">Data Visualization</span>
             </div>
             <div class="project-content">
-                <p class="project-description">Collection of advanced data visualization solutions and interactive dashboards built with Tibco Spotfire.</p>
+                <p class="project-description">Advanced custom visualizations for Spotfire dashboards.</p>
                 <div class="tech-title">Technologies Used:</div>
                 <div class="tech-tags">
                     <span class="tech-tag">Tibco Spotfire</span>
                     <span class="tech-tag">JavaScript</span>
                     <span class="tech-tag">Data Visualization</span>
-                    <span class="tech-tag">Dashboarding</span>
+                    <span class="tech-tag">D3.js</span>
                 </div>
                 <div class="project-footer">
-                    <a href="Tibco-Spotfire-Projects.html" class="project-link">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_10_Custom_Spotfire_Visualizations" class="project-link">
                         View Project <i class="fas fa-arrow-right"></i>
                     </a>
-                    <span class="project-date">Apr 2023</span>
+                    <span class="project-date">Aug 2023</span>
                 </div>
             </div>
         </div>
 
-        <!-- Other Projects -->
+        <!-- Accordion Menu for Filters -->
         <div class="project-card">
             <div class="project-header">
-                <h3>Other Projects</h3>
-                <span class="project-category">Various Domains</span>
+                <h3>Accordion Menu for Filters</h3>
+                <span class="project-category">UI/UX</span>
             </div>
             <div class="project-content">
-                <p class="project-description">Explore more projects spanning automation, API integrations, and industrial AI solutions.</p>
+                <p class="project-description">Advanced filtering interface for Spotfire dashboards using accordion menus.</p>
                 <div class="tech-title">Technologies Used:</div>
                 <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">API Integration</span>
-                    <span class="tech-tag">Automation</span>
-                    <span class="tech-tag">Industrial AI</span>
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">UI/UX</span>
+                    <span class="tech-tag">Dashboard Design</span>
                 </div>
                 <div class="project-footer">
-                    <a href="Other-Projects.html" class="project-link">
-                        View Projects <i class="fas fa-arrow-right"></i>
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_15_Spotfire_Accordion_Menu" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
                     </a>
-                    <span class="project-date">Ongoing</span>
+                    <span class="project-date">Sep 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economic Sensitivity Analysis -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Economic Sensitivity Analysis</h3>
+                <span class="project-category">Financial Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Advanced analysis with Spotfire data functions for economic sensitivity.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">Financial Analysis</span>
+                    <span class="tech-tag">Sensitivity Analysis</span>
+                    <span class="tech-tag">Data Functions</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_19_Economic_Sensitivity_Analysis" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Oct 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carbon Emissions Dashboard -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Carbon Emissions Dashboard</h3>
+                <span class="project-category">Environmental Analytics</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Environmental monitoring dashboard with Spotfire for tracking carbon emissions.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">Environmental Data</span>
+                    <span class="tech-tag">Dashboard Design</span>
+                    <span class="tech-tag">Sustainability</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_21_Carbon_Emissions_Dashboard" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Nov 2023</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Visualization Training -->
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Data Visualization Training (Spotfire)</h3>
+                <span class="project-category">Education</span>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Educational materials for Spotfire users focusing on data visualization best practices.</p>
+                <div class="tech-title">Technologies Used:</div>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tibco Spotfire</span>
+                    <span class="tech-tag">Training</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Educational Materials</span>
+                </div>
+                <div class="project-footer">
+                    <a href="https://github.com/Barnabasco/Portfolio-Projects/tree/main/Project_22_Data_Visualization_Training" class="project-link">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <span class="project-date">Dec 2023</span>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Me</h3>
+                    <p>Senior AI & Data Solutions Architect with 8+ years of experience in machine learning, data analytics, and business intelligence.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Simple filter functionality
