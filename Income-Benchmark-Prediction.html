@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Benchmark Prediction | Machine Learning Classification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Income Benchmark Prediction Using Decision Trees and SVM</h1>
+            <h2>Machine learning approach for income classification</h2>
+            <p>Predicting income benchmarks (above/below $50K) using demographic features from census data</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>This project predicts income benchmarks (above/below $50K) using demographic features from census data. We compared Decision Tree and SVM classifiers on a dataset of 48,842 records with 14 attributes including age, education, and occupation.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Machine Learning</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Data Science</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Economics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Decision Trees</span>
+                    <span class="tag"><i class="fas fa-tag"></i> SVM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-flask"></i>
+                <h2 class="section-title">Methodology</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Implementation</span>
+                    </div>
+                    <pre><code>from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+
+# Load and preprocess data
+data = pd.read_csv('adult.csv')
+X = data.drop('income', axis=1)
+y = data['income'].apply(lambda x: 1 if x == '>50K' else 0)
+
+# Feature engineering
+X = pd.get_dummies(X, columns=['workclass', 'education', 'marital-status', 
+                               'occupation', 'relationship', 'race', 'sex', 
+                               'native-country'])
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Initialize models
+dt = DecisionTreeClassifier(max_depth=5, min_samples_split=10)
+svm = SVC(kernel='rbf', C=1.0, gamma='scale')
+
+# Train and evaluate
+dt.fit(X_train, y_train)
+svm.fit(X_train, y_train)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2 class="section-title">Performance Metrics</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Accuracy</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>F1-Score</th>
+                            <th>Training Time (s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Decision Tree</td>
+                            <td>85.7%</td>
+                            <td>0.79</td>
+                            <td>0.65</td>
+                            <td>0.71</td>
+                            <td>3.2</td>
+                        </tr>
+                        <tr>
+                            <td>SVM (RBF Kernel)</td>
+                            <td class="impact-metric"><span class="improvement">86.3%</span></td>
+                            <td class="impact-metric"><span class="improvement">0.81</span></td>
+                            <td>0.67</td>
+                            <td class="impact-metric"><span class="improvement">0.73</span></td>
+                            <td>28.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>Gini Index</span>
+                    </div>
+                    <pre><code>$ \text{Gini Index} = 1 - \sum_{i=1}^{c} (p_i)^2 $</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Importance -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-star"></i>
+                <h2 class="section-title">Feature Importance</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-graduation-cap"></i> Education Level</h3>
+                        <p>Highest predictor of income level</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-chart-line"></i> Capital Gain</h3>
+                        <p>Second most important predictor</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-clock"></i> Work Hours</h3>
+                        <p>Significant indicator of income potential</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2 class="section-title">Applications</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-bullseye"></i> Financial Services Targeting</h3>
+                        <p>Identify potential premium customers</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-chart-line"></i> Policy Impact Analysis</h3>
+                        <p>Simulate effects of education reforms</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-search-dollar"></i> Economic Research</h3>
+                        <p>Study income distribution patterns</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fab fa-python"></i> Jupyter Notebook</h3>
+                        <p>Complete analysis with code and visualizations</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Notebook
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-database"></i> Dataset Source</h3>
+                        <p>Original census dataset used for analysis</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-external-link-alt"></i> Access Dataset
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-laptop-code"></i> Interactive Demo</h3>
+                        <p>Live demo to test the income prediction model</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-play-circle"></i> Launch Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>Economic Data Science</h3>
+                <p>Applying machine learning to economic analysis and prediction</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

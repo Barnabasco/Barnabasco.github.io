@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Reporting Modernisation | Financial Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Legacy Reporting Modernisation and Regional Payment Analytics</h1>
+            <h2>Transforming financial reporting infrastructure</h2>
+            <p>Migrated 50+ legacy Excel reports to real-time platform serving 5,000+ users</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>Migrated 50+ legacy Excel reports to a real-time SSRS platform serving 5,000+ users, reducing report generation time from 8 hours to 15 minutes while improving data accuracy by 99.2%. Implemented regional payment analytics that identified $4.8M in recoverable revenue.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Business Intelligence</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Data Engineering</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Finance</span>
+                    <span class="tag"><i class="fas fa-tag"></i> SSRS</span>
+                    <span class="tag"><i class="fas fa-tag"></i> ETL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Migration Architecture -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-sitemap"></i>
+                <h2 class="section-title">Migration Architecture</h2>
+            </div>
+            <div class="section-content">
+                <h3>Legacy Reporting Modernization Pipeline</h3>
+                
+                <div class="data-flow">
+                    <div class="flow-step">
+                        <div class="step-icon">📥</div>
+                        <h3 class="step-title">Extraction</h3>
+                        <p class="step-details">Process Legacy Excel Files</p>
+                        <p><i>Tools: Python Pandas, SSIS</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🔄</div>
+                        <h3 class="step-title">Transformation</h3>
+                        <p class="step-details">ETL Pipeline Processing</p>
+                        <p><i>Features: Error logging, Auto-correction</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">💾</div>
+                        <h3 class="step-title">Storage</h3>
+                        <p class="step-details">SQL Server Data Warehouse</p>
+                        <p><i>Features: Star schema, Columnstore indexing</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">📄</div>
+                        <h3 class="step-title">Reporting</h3>
+                        <p class="step-details">SSRS Report Generation</p>
+                        <p><i>Output: 50+ parameterized reports</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🌐</div>
+                        <h3 class="step-title">Delivery</h3>
+                        <p class="step-details">Web Portal Access</p>
+                        <p><i>Features: SSO, Mobile-responsive</i></p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">📊</div>
+                        <h3 class="step-title">Analytics</h3>
+                        <p class="step-details">Power BI Dashboards</p>
+                        <p><i>Components: Payment trends, Recovery heatmaps</i></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-code"></i>
+                <h2 class="section-title">Technical Implementation</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-container">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python</span>
+                            <span>Data Extraction</span>
+                        </div>
+                        <pre><code># Extraction script
+import pandas as pd
+from sqlalchemy import create_engine
+
+def extract_excel_to_staging(file_path):
+    df = pd.read_excel(file_path, sheet_name='Financials')
+    # Handle merged cells and header rows
+    df = df.iloc[3:].dropna(how='all')
+    df.columns = ['region', 'account', 'due_date', 'amount']
+    return df</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">SQL</span>
+                            <span>Data Cleansing</span>
+                        </div>
+                        <pre><code>-- Data cleansing 
+UPDATE staging_table
+SET amount = TRY_CAST(REPLACE(amount, '$', '') AS DECIMAL(18,2))
+WHERE ISNUMERIC(REPLACE(amount, '$', '')) = 1;</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">SQL</span>
+                        <span>Revenue Recovery Analysis</span>
+                    </div>
+                    <pre><code>-- Regional revenue recovery analysis
+WITH regional_data AS (
+    SELECT 
+        region,
+        SUM(recoverable_amount) AS potential_recovery,
+        DATEDIFF(day, MAX(due_date), GETDATE()) AS days_overdue
+    FROM payments
+    WHERE payment_status = 'delinquent'
+    GROUP BY region
+)
+SELECT 
+    region,
+    potential_recovery,
+    days_overdue,
+    potential_recovery * (0.01 * days_overdue) AS recovery_score
+FROM regional_data
+ORDER BY recovery_score DESC;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-search-dollar"></i>
+                <h2 class="section-title">Key Findings</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Region1</h3>
+                        <p>$1.2M recoverable (32% of total)</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Total Recoverable</h3>
+                        <p>$4.8M identified recoverable revenue</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-bug"></i> Error Reduction</h3>
+                        <p>84% reduction in reporting errors</p>
+                    </div>
+                </div>
+                
+                <table style="margin-top:30px;">
+                    <thead>
+                        <tr>
+                            <th>Pipeline Stage</th>
+                            <th>Before Migration</th>
+                            <th>After Migration</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data Extraction</td>
+                            <td>4 hours manual</td>
+                            <td>15 min automated</td>
+                            <td class="impact-metric"><span class="improvement">94% faster</span></td>
+                        </tr>
+                        <tr>
+                            <td>Validation</td>
+                            <td>Error-prone</td>
+                            <td>Automated checks</td>
+                            <td class="impact-metric"><span class="improvement">99.8% accuracy</span></td>
+                        </tr>
+                        <tr>
+                            <td>Report Access</td>
+                            <td>Email attachments</td>
+                            <td>Self-service portal</td>
+                            <td class="impact-metric"><span class="improvement">24/7 availability</span></td>
+                        </tr>
+                        <tr>
+                            <td>Payment Insights</td>
+                            <td>Monthly static</td>
+                            <td>Real-time dashboards</td>
+                            <td class="impact-metric"><span class="improvement">63% faster decisions</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-excel"></i> Migration Framework</h3>
+                        <p>Complete framework for legacy report migration</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Template
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-chart-line"></i> Payment Analytics</h3>
+                        <p>Power BI templates for payment analytics</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Dashboard
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-book"></i> Implementation Guide</h3>
+                        <p>Step-by-step migration implementation guide</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Guide
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>Financial Analytics</h3>
+                <p>Modernizing financial reporting and uncovering revenue opportunities through data analytics</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

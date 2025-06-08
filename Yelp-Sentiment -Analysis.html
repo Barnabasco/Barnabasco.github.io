@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yelp Sentiment Analysis | NLP Classification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Yelp Sentiment Analysis</h1>
+            <h2>Deep learning for review classification</h2>
+            <p>Classifying Yelp reviews into positive/negative sentiments using NLP techniques</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>This system classifies Yelp reviews into positive/negative sentiments using NLP techniques. Trained on 500,000 reviews with 1-5 star ratings, we compared traditional and transformer-based approaches.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> NLP</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Deep Learning</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Sentiment Analysis</span>
+                    <span class="tag"><i class="fas fa-tag"></i> LSTM</span>
+                    <span class="tag"><i class="fas fa-tag"></i> BERT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Architecture -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-network-wired"></i>
+                <h2 class="section-title">Model Architecture</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Model Implementation</span>
+                    </div>
+                    <pre><code>from transformers import BertForSequenceClassification
+import torch
+
+# LSTM Model
+class LSTMClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True)
+        self.fc = nn.Linear(hidden_dim, 2)
+    
+    def forward(self, x):
+        x = self.embedding(x)
+        _, (hidden, _) = self.lstm(x)
+        return self.fc(hidden[-1])
+
+# BERT Model
+bert_model = BertForSequenceClassification.from_pretrained(
+    'bert-base-uncased', 
+    num_labels=2
+)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Comparison -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2 class="section-title">Performance Comparison</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Accuracy</th>
+                            <th>F1-Score</th>
+                            <th>Inference (ms)</th>
+                            <th>Model Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>LSTM</td>
+                            <td>97.1%</td>
+                            <td>0.88</td>
+                            <td>12</td>
+                            <td>128 mb</td>
+                        </tr>
+                        <tr>
+                            <td>BERT-base</td>
+                            <td>92.7%</td>
+                            <td>0.91</td>
+                            <td>56</td>
+                            <td>440 mb</td>
+                        </tr>
+                        <tr>
+                            <td>DistilBERT</td>
+                            <td>91.8%</td>
+                            <td>0.90</td>
+                            <td>28</td>
+                            <td>250 mb</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>Cross-Entropy Loss</span>
+                    </div>
+                    <pre><code>$ \text{Cross-Entropy Loss} = -\sum_{c=1}^M y_c \log(p_c) $</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2 class="section-title">Applications</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-chart-line"></i> Business Intelligence</h3>
+                        <p>Track sentiment trends over time for strategic decision-making</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-headset"></i> Customer Service</h3>
+                        <p>Identify urgent complaints for immediate response</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-search-dollar"></i> Market Research</h3>
+                        <p>Compare competitor sentiment profiles for market positioning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fas fa-database"></i> Model Zoo</h3>
+                        <p>Collection of pre-trained sentiment analysis models</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Access Models
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-code"></i> Live API</h3>
+                        <p>Production-ready API for sentiment analysis</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-external-link-alt"></i> API Documentation
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-csv"></i> Dataset</h3>
+                        <p>Processed Yelp review dataset with sentiment labels</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-cloud-download-alt"></i> Download Dataset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>NLP & Sentiment Analysis</h3>
+                <p>Transforming customer feedback into actionable business insights</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Analysis | HR Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Employee Attrition Analysis Using Clustering Algorithms</h1>
+            <h2>Unsupervised learning for HR analytics</h2>
+            <p>Identifying patterns in employee attrition using clustering techniques</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>This analysis identifies patterns in employee attrition using clustering techniques on HR data. We processed 1,470 employee records with 35 features to discover hidden attrition patterns using K-Means and DBSCAN algorithms.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Clustering</span>
+                    <span class="tag"><i class="fas fa-tag"></i> HR Analytics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Unsupervised Learning</span>
+                    <span class="tag"><i class="fas fa-tag"></i> K-Means</span>
+                    <span class="tag"><i class="fas fa-tag"></i> DBSCAN</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-code"></i>
+                <h2 class="section-title">Methodology</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Implementation</span>
+                    </div>
+                    <pre><code>from sklearn.cluster import KMeans, DBSCAN
+from sklearn.preprocessing import StandardScaler
+import umap
+
+# Preprocessing
+df = pd.read_csv('employee_attrition.csv')
+X = df.drop(['EmployeeID', 'Attrition'], axis=1)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Dimensionality reduction
+reducer = umap.UMAP(n_components=2)
+X_umap = reducer.fit_transform(X_scaled)
+
+# Clustering
+kmeans = KMeans(n_clusters=4, random_state=42).fit(X_umap)
+dbscan = DBSCAN(eps=0.5, min_samples=10).fit(X_umap)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cluster Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2 class="section-title">Cluster Analysis</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Clusters</th>
+                            <th>Silhouette Score</th>
+                            <th>Attrition Rate in High-Risk Cluster</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>K-Means</td>
+                            <td>4</td>
+                            <td>0.62</td>
+                            <td>73.4%</td>
+                        </tr>
+                        <tr>
+                            <td>DBSCAN</td>
+                            <td>5</td>
+                            <td>0.58</td>
+                            <td class="impact-metric"><span class="improvement">78.2%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>Silhouette Score</span>
+                    </div>
+                    <pre><code>$ \text{Silhouette Score} = \frac{b - a}{\max(a, b)} $</code></pre>
+                    <p>Where a = mean intra-cluster distance, b = mean nearest-cluster distance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-search"></i>
+                <h2 class="section-title">Key Findings</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-user-clock"></i> High-Risk Profile</h3>
+                        <ul>
+                            <li>60+ hours weekly</li>
+                            <li>Limited promotion opportunities</li>
+                            <li>Low job satisfaction (≤ 2/5)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-lightbulb"></i> Retention Recommendations</h3>
+                        <ul>
+                            <li>Flexible work arrangements</li>
+                            <li>Career development programs</li>
+                            <li>Recognition initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-rocket"></i>
+                <h2 class="section-title">Applications</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-shield-alt"></i> Proactive Retention</h3>
+                        <p>Target high-risk employees with retention programs</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-money-bill-wave"></i> Compensation Optimization</h3>
+                        <p>Benchmark against cluster characteristics</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-user-plus"></i> Talent Acquisition</h3>
+                        <p>Identify candidate profiles with higher retention potential</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fab fa-python"></i> Analysis Notebook</h3>
+                        <p>Jupyter notebook with complete analysis</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Notebook
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-chart-bar"></i> HR Dashboard</h3>
+                        <p>Interactive dashboard for attrition analysis</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-external-link-alt"></i> View Dashboard
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-pdf"></i> Retention Guide</h3>
+                        <p>Employee retention strategy recommendations</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Guide
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>HR Analytics</h3>
+                <p>Data-driven insights for human resource management and employee retention</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time User Behaviour Analytics | Platform Optimization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Real-Time User Behaviour Analytics for Platform Optimisation</h1>
+            <h2>Enhancing digital experience through behavioral insights</h2>
+            <p>Processing 2.5M+ daily user events to identify usability bottlenecks and increase conversions</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>Leveraged big data analytics to process 2.5M+ daily user events, identifying usability bottlenecks through clickstream analysis, heatmaps, and session recordings. Implemented real-time dashboards that reduced bounce rate by 31% and increased conversion by 19%.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Web Analytics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Big Data</span>
+                    <span class="tag"><i class="fas fa-tag"></i> User Experience</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Tableau</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Clickstream</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-code"></i>
+                <h2 class="section-title">Technical Implementation</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-container">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">Python</span>
+                            <span>Clickstream Processing</span>
+                        </div>
+                        <pre><code># Clickstream processing pipeline
+from pyspark.sql import SparkSession
+from pyspark.streaming import StreamingContext
+
+spark = SparkSession.builder.appName("UserBehavior").getOrCreate()
+stream = spark.readStream.format("kafka").option("kafka.bootstrap.servers", "kafka:9092").load()
+
+# Sessionization
+sessions = stream.groupBy(session_window("timestamp", "15 minutes"), "user_id")
+                 .agg(collect_list("event").alias("events"))
+                 
+# Bottleneck detection
+bottlenecks = sessions.filter(array_contains(col("events"), "error_click"))
+                      .groupBy("page_section").count()</code></pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">SQL</span>
+                            <span>Engagement Metrics</span>
+                        </div>
+                        <pre><code>-- Engagement metrics calculation
+SELECT
+    user_id,
+    COUNT(DISTINCT session_id) AS sessions,
+    SUM(CASE WHEN event = 'purchase' THEN 1 ELSE 0 END) AS conversions,
+    AVG(session_duration) AS avg_session_time
+FROM user_events
+GROUP BY user_id;</code></pre>
+                    </div>
+                </div>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">JavaScript</span>
+                        <span>Session Recording</span>
+                    </div>
+                    <pre><code>&lt;script&gt;
+window.recordSession = true;
+window.sessionSampling = 0.15; // 15% of users
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2 class="section-title">Key Findings & Optimization</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UX Issue</th>
+                            <th>Impact Before</th>
+                            <th>Solution</th>
+                            <th>Result After</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Checkout form complexity</td>
+                            <td>42% dropoff</td>
+                            <td>Simplified 5→2 steps</td>
+                            <td class="impact-metric"><span class="improvement">↓ 18% dropoff</span></td>
+                        </tr>
+                        <tr>
+                            <td>Hidden CTAs</td>
+                            <td>27% lower CTR</td>
+                            <td>Visual prominence</td>
+                            <td class="impact-metric"><span class="improvement">↑ 34% CTR</span></td>
+                        </tr>
+                        <tr>
+                            <td>Slow page loads</td>
+                            <td>3.8s avg load</td>
+                            <td>CDN optimization</td>
+                            <td class="impact-metric"><span class="improvement">↓ 1.2s load</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Behavioral Metrics -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-calculator"></i>
+                <h2 class="section-title">Behavioral Metrics</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>Engagement Score</span>
+                    </div>
+                    <pre><code>$ \text{Engagement Score} = \frac{\log(sessions) \times \sqrt{\text{conversions}}}{\text{bounce_rate}} $</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Components -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-cogs"></i>
+                <h2 class="section-title">Technical Components</h2>
+            </div>
+            <div class="section-content">
+                <div class="data-flow">
+                    <div class="flow-step">
+                        <div class="step-icon">📱</div>
+                        <h3 class="step-title">User Devices</h3>
+                        <p class="step-details">Event tracking implementation</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">⚡</div>
+                        <h3 class="step-title">Kafka</h3>
+                        <p class="step-details">Real-time data streaming</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">🔥</div>
+                        <h3 class="step-title">Spark Streaming</h3>
+                        <p class="step-details">Stream processing</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">📊</div>
+                        <h3 class="step-title">Redshift</h3>
+                        <p class="step-details">Data warehousing</p>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="step-icon">📈</div>
+                        <h3 class="step-title">Tableau</h3>
+                        <p class="step-details">Visualization & Dashboards</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-line"></i>
+                <h2 class="section-title">Impact Metrics</h2>
+            </div>
+            <div class="section-content">
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-running"></i> Bounce Rate</h3>
+                        <p>31% reduction in bounce rate</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-shopping-cart"></i> Conversion Rate</h3>
+                        <p>19% increase in conversion rate</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-star"></i> NPS Scores</h3>
+                        <p>28% improvement in NPS scores</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fas fa-chart-bar"></i> Analytics Dashboard</h3>
+                        <p>Tableau dashboard showing live user behavior metrics</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-external-link-alt"></i> View Dashboard
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-code"></i> Tracking Implementation</h3>
+                        <p>JavaScript implementation for user behavior tracking</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fab fa-github"></i> View Code
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-alt"></i> Optimization Report</h3>
+                        <p>Detailed report on UX improvements and impact metrics</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>User Behavior Analytics</h3>
+                <p>Transforming digital experiences through data-driven insights and real-time analytics</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

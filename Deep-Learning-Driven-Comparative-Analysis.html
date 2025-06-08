@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Comparative Analysis | Medical Imaging</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>Deep Learning-Driven Comparative Analysis of Pre-trained CNNs and Transformers</h1>
+            <h2>Benchmarking architectures for respiratory disease detection</h2>
+            <p>Evaluating ResNet, EfficientNet, ViT, and Swin Transformers on 15,000+ medical images</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>Comprehensive comparison of pre-trained convolutional neural networks (CNNs) and transformer architectures for detecting respiratory diseases from chest X-rays and CT scans. Evaluated models on multi-source datasets containing COVID-19, pneumonia, and normal cases.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Deep Learning</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Computer Vision</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Medical Imaging</span>
+                    <span class="tag"><i class="fas fa-tag"></i> PyTorch</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Transformers</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-flask"></i>
+                <h2 class="section-title">Methodology</h2>
+            </div>
+            <div class="section-content">
+                <p>Implemented a dual-path framework to process both X-ray and CT scan images using PyTorch with custom fusion module.</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Model Initialization</span>
+                    </div>
+                    <pre><code>from torchvision import models
+from transformers import ViTForImageClassification
+
+# CNN model initialization
+resnet = models.resnet50(pretrained=True)
+efficientnet = models.efficientnet_b7(pretrained=True)
+
+# Transformer model initialization
+vit = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224')
+swin = SwinTransformer(hidden_dim=128, layers={2, 2, 18, 2}, heads={4, 8, 16, 32})
+
+# Custom fusion module for multi-modal inputs
+class FusionModel(nn.Module):
+    def __init__(self, cnn_backbone, transformer_backbone):
+        super().__init__()
+        self.cnn = cnn_backbone
+        self.transformer = transformer_backbone
+        self.classifier = nn.Linear(2048 + 768, 3)  # 3 disease classes
+        
+    def forward(self, x_img, x_ct):
+        cnn_features = self.cnn(x_img)
+        trans_features = self.transformer(x_ct)
+        fused = torch.cat((cnn_features, trans_features), dim=1)
+        return self.classifier(fused)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experimental Results -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-bar"></i>
+                <h2 class="section-title">Experimental Results</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>X-ray Accuracy</th>
+                            <th>CT Scan Accuracy</th>
+                            <th>Params (M)</th>
+                            <th>Inference (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ResNet-50</td>
+                            <td>92.3%</td>
+                            <td>89.7%</td>
+                            <td>25.6</td>
+                            <td>42</td>
+                        </tr>
+                        <tr>
+                            <td>EfficientNet-B7</td>
+                            <td>94.1%</td>
+                            <td>91.5%</td>
+                            <td>66.3</td>
+                            <td>68</td>
+                        </tr>
+                        <tr>
+                            <td>ViT-Base</td>
+                            <td>93.7%</td>
+                            <td>94.2%</td>
+                            <td>86.6</td>
+                            <td>85</td>
+                        </tr>
+                        <tr>
+                            <td>Swin-Large</td>
+                            <td class="impact-metric"><span class="improvement">96.2%</span></td>
+                            <td class="impact-metric"><span class="improvement">95.8%</span></td>
+                            <td>197.1</td>
+                            <td>127</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>F1-score Calculation</span>
+                    </div>
+                    <pre><code>$ \text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} $</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Highlights -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-cogs"></i>
+                <h2 class="section-title">Implementation Highlights</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Data Augmentation</span>
+                    </div>
+                    <pre><code># Multi-modal data augmentation pipeline
+transform = transforms.Compose([
+    transforms.RandomAffine(degrees=15, translate=(0.1, 0.1)),
+    transforms.RandomResizedCrop(224),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),
+    transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], 
+                         std=[0.229, 0.224, 0.225])
+])</code></pre>
+                </div>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Training Optimization</span>
+                    </div>
+                    <pre><code># Gradient accumulation for large transformers
+optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
+for i, (inputs, labels) in enumerate(train_loader):
+    outputs = model(inputs)
+    loss = criterion(outputs, labels)
+    loss = loss / accumulation_steps
+    loss.backward()
+    
+    if (i+1) % accumulation_steps == 0:
+        optimizer.step()
+        optimizer.zero_grad()</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-check-circle"></i>
+                <h2 class="section-title">Conclusion</h2>
+            </div>
+            <div class="section-content">
+                <p>Transformers consistently outperformed CNNs on CT scans (+3.8% accuracy), while CNNs showed faster inference times (2-3× speedup). The Swin Transformer achieved state-of-the-art results but required extensive computational resources.</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3><i class="fas fa-robot"></i> CNN Advantage</h3>
+                        <p>2-3× faster inference times</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-microscope"></i> Transformer Advantage</h3>
+                        <p>+3.8% accuracy on CT scans</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-trophy"></i> Best Performer</h3>
+                        <p>Swin Transformer: 96.2% accuracy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fab fa-github"></i> GitHub Repository</h3>
+                        <p>Complete source code and implementation</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fab fa-github"></i> View Repository
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-pdf"></i> Research Paper</h3>
+                        <p>Detailed comparative analysis methodology and findings</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-download"></i> Download Paper
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-database"></i> Dataset</h3>
+                        <p>Processed medical imaging dataset with annotations</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-cloud-download-alt"></i> Access Dataset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>Deep Learning Research</h3>
+                <p>Advancing medical diagnostics through deep learning and computer vision</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

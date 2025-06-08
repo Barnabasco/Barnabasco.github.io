@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Dish Detection | Urban Planning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Centralized CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Chimaobi<span>Opara</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>TV Aerial and Satellite Dish Detection Using YOLOv7 and YOLOv8</h1>
+            <h2>Automated rooftop equipment recognition for urban planning</h2>
+            <p>Detecting TV aerials and satellite dishes in aerial imagery</p>
+            
+            <div class="author-info">
+                <img src="profile_image1.jpg" alt="Chimaobi Barnabas Opara">
+                <div>
+                    <h3>Chimaobi Barnabas Opara</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-clipboard-list"></i>
+                <h2 class="section-title">Project Overview</h2>
+            </div>
+            <div class="section-content">
+                <p>This system detects TV aerials and satellite dishes in aerial imagery using YOLOv7 and YOLOv8 models. Trained on 8,500 annotated UAV images, our optimized YOLOv8 model achieves 94.3 mAP with real-time performance on aerial video streams.</p>
+                
+                <div class="tags">
+                    <span class="tag"><i class="fas fa-tag"></i> Object Detection</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Remote Sensing</span>
+                    <span class="tag"><i class="fas fa-tag"></i> Urban Informatics</span>
+                    <span class="tag"><i class="fas fa-tag"></i> YOLOv7</span>
+                    <span class="tag"><i class="fas fa-tag"></i> YOLOv8</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Comparison -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-project-diagram"></i>
+                <h2 class="section-title">Architecture Comparison</h2>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Model Initialization</span>
+                    </div>
+                    <pre><code># YOLOv7 vs YOLOv8 model initialization
+from ultralytics import YOLO
+
+# YOLOv7
+model_v7 = YOLO('yolov7.pt') 
+
+# YOLOv8
+model_v8 = YOLO('yolov8n.pt') 
+
+# Custom training configuration
+results_v8 = model_v8.train(
+    data='aerial_dishes.yaml',
+    imgsz=640,
+    epochs=150,
+    batch=16,
+    lr0=0.01,
+    optimizer='AdamW',
+    augment=True,
+    mixup=0.2
+)</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Comparison -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-chart-line"></i>
+                <h2 class="section-title">Performance Comparison</h2>
+            </div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>mAP@0.5</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>FPS</th>
+                            <th>Params (M)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>YOLOv7</td>
+                            <td>92.1%</td>
+                            <td>0.89</td>
+                            <td>0.87</td>
+                            <td>48</td>
+                            <td>36.9</td>
+                        </tr>
+                        <tr>
+                            <td>YOLOv8-n</td>
+                            <td>94.3%</td>
+                            <td>0.92</td>
+                            <td>0.91</td>
+                            <td>63</td>
+                            <td>3.2</td>
+                        </tr>
+                        <tr>
+                            <td>YOLOv8-s</td>
+                            <td class="impact-metric"><span class="improvement">95.7%</span></td>
+                            <td class="impact-metric"><span class="improvement">0.94</span></td>
+                            <td class="impact-metric"><span class="improvement">0.93</span></td>
+                            <td>52</td>
+                            <td>11.4</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block" style="margin-top:20px;">
+                    <div class="code-header">
+                        <span class="code-lang">Formula</span>
+                        <span>mAP Calculation</span>
+                    </div>
+                    <pre><code>$ \text{mAP} = \frac{1}{N}\sum_{i=1}^{N} AP_i $</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Features -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-cogs"></i>
+                <h2 class="section-title">Implementation Features</h2>
+            </div>
+            <div class="section-content">
+                <h3>Custom mosaic augmentation for aerial perspectives</h3>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-lang">Python</span>
+                        <span>Mosaic Augmentation</span>
+                    </div>
+                    <pre><code># Mosaic implementation example
+def mosaic_augmentation(images, labels, size=640):
+    mosaic_img = np.zeros((size*2, size*2, 3), dtype=np.uint8)
+    # Combine 4 images in 2x2 grid
+    indices = random.sample(range(len(images)), 4)
+    for i, idx in enumerate(indices):
+        img = images[idx]
+        h, w = img.shape[:2]
+        x = size * (i % 2)
+        y = size * (i // 2)
+        mosaic_img[y:y+h, x:x+w] = img
+        # Adjust labels coordinates accordingly
+    return mosaic_img, mosaic_labels</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Resources -->
+        <section class="section">
+            <div class="section-header">
+                <i class="fas fa-folder-open"></i>
+                <h2 class="section-title">Project Resources</h2>
+            </div>
+            <div class="section-content">
+                <div class="resources">
+                    <div class="resource-card">
+                        <h3><i class="fab fa-github"></i> GitHub Repository</h3>
+                        <p>Complete implementation and training scripts</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fab fa-github"></i> View Repository
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-file-video"></i> Demo Video</h3>
+                        <p>Real-time detection demonstration</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-play-circle"></i> Watch Demo
+                        </button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3><i class="fas fa-database"></i> Annotated Dataset</h3>
+                        <p>8,500 annotated UAV images for aerial object detection</p>
+                        <button style="margin-top: 15px; background: var(--primary-color); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                            <i class="fas fa-cloud-download-alt"></i> Download Dataset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Unified Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                <h3>Aerial Object Detection</h3>
+                <p>Automated detection systems for urban planning and infrastructure management</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>barnbascopara@gmail.com</span>
+                        </div>
+                        <div class="social-links" style="display: flex; gap: 15px; margin-top: 1rem;">
+                            <a href="https://www.linkedin.com/in/chimaobi-barnabas-opara" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/Barnabasco" style="color: white; font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 All rights reserved. | Designed by Chimaobi Barnabas Opara</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Centralized JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
